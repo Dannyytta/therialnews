@@ -1,0 +1,30 @@
+<center>
+<h1>News!!!</h1>
+<p>puedes comentar!!! Se parte de esta comunidad</p>
+</center>
+<br>
+<br>
+<div class="card text-bg-dark mb-3" >
+    <div class="card-header">
+        <center><h5 class="card-title"><%= @news.title %></h5>
+    </div>
+    <div class="card-body">
+        <center><p class="card-text"><%= @news.description %></p>
+    </div>
+</div>
+<br>
+<center><h3>Comentarios</h3>
+
+
+<% @comments.each do |n|%>
+    <div class= "card text-bg-dark mb-3">
+        <%= render "comments/comment", comment: n %>
+        <% if user_signed_in?%>
+            <%=link_to "Ver/Editar", news_comment_path(n.news, n), class:"btn btn-danger" %>
+        <%end%>
+    </div>
+<%end%>
+
+<% if user_signed_in? %>
+    <%= render "comments/form", comment: @comment, pag: news_comments_path(@news) %>
+<%end%>

@@ -1,0 +1,19 @@
+<center><h1>The Rial News!</h1>
+<p>Todas las semanas con nueva información para tu deleite (ñam ñam) </p>
+</center>
+
+
+
+<% @news.each do |n|%>
+    
+    <div class="card text-bg-dark mb-3" >
+    <div class="card-header">
+        <center><h5 class="card-title"><%= n.title %></h5>
+    </div>
+    <div class="card-body">
+        <center><p class="card-text"><%= n.description %></p>
+        <%=link_to "Comentarios", news_path(n), class:"btn btn-danger"  %>
+    </div>
+    <br>
+<%end%>
+
